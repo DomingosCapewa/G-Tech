@@ -1,16 +1,9 @@
 <footer>
       <div class="top">
         <div class="logo">
-        <img src="/Facul/assets/img/logo-gtech.jpg" alt="Logo G-TECH" />
+        <img src="/facul/assets/img/logo G-TECH.jpg" alt="Logo G-TECH" />
         </div>
-        <ul>
-        <li><a href="/facul/index.php">Inicio</a></li>
-        <li><a href="/facul/public/pages/servicos.php">Serviços</a></li>
-        <li><a href="/facul/planos.php">Planos</a></li>
-        <li><a href="/facul/public/pages/sobreNos.php">Sobre nós</a></li>
-        <li><a href="/public/pages/projetos.html">Projetos</a></li>
-        <li><a href="#feedback">Comentários</a></li>
-        </ul>
+        
       </div>
       <div class="separator"></div>
       <div class="bottom">

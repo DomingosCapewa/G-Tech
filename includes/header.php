@@ -29,7 +29,7 @@
     <!-- NAV -->
     <nav>
       <div class="logo">
-      <img src="/Facul/assets/img/logo-gtech.jpg" alt="Logo G-TECH" />
+      <img src="/facul/assets/img/logo G-TECH.jpg" alt="Logo G-TECH" />
         <a href="/facul/index.php">G-TECH</a>
       </div>
       <ul>
