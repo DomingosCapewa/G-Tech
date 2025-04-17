@@ -5,6 +5,7 @@ require_once 'includes/header.php';
 $stmt = $pdo->query("SELECT * FROM planos ORDER BY preco");
 $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+<body>
 
 <div class="main" id="main">
       <div class="left">
@@ -26,35 +27,51 @@ $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
     
-<section class="planos">
+    <section class="planos py-5">
     <div class="container">
-        <h2>Escolha seu Plano</h2>
-        <div class="card-container">
+        <h2 class="text-center mb-5">Escolha seu Plano</h2>
+        
+        <div class="row g-4 justify-content-center">
             <?php foreach ($planos as $plano): ?>
-            <div class="card <?= $plano['destaque'] ? 'destaque' : '' ?>">
-                <h3><?= htmlspecialchars($plano['nome']) ?></h3>
-                <p class="preco">
-                    <?php if ($plano['preco_original']): ?>
-                        <span class="de">R$ <?= number_format($plano['preco_original'], 2, ',', '.') ?></span>
+            <div class="col-md-4">
+                <div class="card h-100 <?= $plano['destaque'] ? 'border-primary border-2' : '' ?>">
+                    <?php if ($plano['destaque']): ?>
+                        <div class="position-absolute top-0 start-50 translate-middle badge bg-primary rounded-pill">
+                            Mais Popular
+                        </div>
                     <?php endif; ?>
-                    R$ <?= number_format($plano['preco'], 2, ',', '.') ?>/mês
-                </p>
-                <p>R$ <?= number_format($plano['preco'] * 12, 2, ',', '.') ?> por 1 ano</p>
-                <?php if ($plano['economia']): ?>
-                    <p class="economia">Economize até R$ <?= number_format($plano['economia'], 2, ',', '.') ?></p>
-                <?php endif; ?>
-                <?php if ($plano['dominio_gratis']): ?>
-                    <p>1 ano de domínio online grátis</p>
-                <?php endif; ?>
-                
-                <button data-bs-toggle="modal" data-bs-target="#planoModal<?= $plano['id'] ?>">
-                    Selecionar Plano
-                </button>
+                    
+                    <div class="card-body text-center">
+                        <h3 class="card-title text-primary"><?= htmlspecialchars($plano['nome']) ?></h3>
+                        
+                        <div class="my-4">
+                            <span class="text-decoration-line-through text-muted">R$ <?= number_format($plano['preco_original'], 2, ',', '.') ?></span>
+                            <h4 class="fw-bold my-2">R$ <?= number_format($plano['preco'], 2, ',', '.') ?>/mês</h4>
+                            <p>R$ <?= number_format($plano['preco'] * 12, 2, ',', '.') ?> por 1 ano</p>
+                        </div>
+                        
+                        <div class="bg-light p-3 rounded mb-4">
+                            <p class="text-success fw-bold mb-2">
+                                <i class="bi bi-arrow-down-circle"></i> Economize até R$ <?= number_format($plano['economia'], 2, ',', '.') ?>
+                            </p>
+                            <p class="mb-0">
+                                <i class="bi bi-check-circle text-primary"></i> 1 ano de domínio .online grátis
+                            </p>
+                        </div>
+                        
+                        <button class="btn btn-warning w-100 fw-bold py-2" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#planoModal<?= $plano['id'] ?>">
+                            Selecionar Plano
+                        </button>
+                    </div>
+                </div>
             </div>
             <?php endforeach; ?>
         </div>
     </div>
 </section>
+
 <style>
   .planos {
   padding: 60px 0;
@@ -75,6 +92,8 @@ $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 30px;
+  position: relative;
+  z-index: 10;
 }
 
 .card {
@@ -110,6 +129,7 @@ $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: bold;
+  z-index: 2;
 }
 
 .card h3 {
@@ -166,6 +186,38 @@ $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     width: 100%;
     max-width: 350px;
   }
+  .planos .card {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden; /* Previne vazamento de elementos */
+}
+
+.planos .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Posicionamento do badge "Mais Popular" */
+.planos .badge {
+    font-size: 0.8rem;
+    z-index: 1; /* Garante que fique acima de outros elementos */
+    top: -10px;
+}
+
+/* Espaçamento interno para evitar sobreposição com o badge */
+.planos .card-body {
+    padding-top: 2rem;
+}
+
+/* Estilo para preço original riscado */
+.text-decoration-line-through {
+    text-decoration: line-through;
+}
+
+/* Ajuste para os ícones */
+.bi {
+    margin-right: 5px;
+}
 }
 
 </style>
@@ -295,6 +347,8 @@ $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
     </div>
+</body>
+
 
 
 <?php require_once 'includes/footer.php'; ?>

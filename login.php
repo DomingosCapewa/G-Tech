@@ -55,7 +55,7 @@ require_once 'includes/header.php';
                         </div>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary">Entrar</button>
-                            <a href="/register.php" class="btn btn-outline-secondary">Criar nova conta</a>
+                            <a href="/facul/register.php" class="btn btn-outline-secondary">Criar nova conta</a>
                         </div>
                     </form>
                 </div>

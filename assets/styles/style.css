@@ -2,6 +2,7 @@
 
 html {
   scroll-behavior: smooth;
+
 }
 
 * {
@@ -9,6 +10,7 @@ html {
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  
 }
 
 a {
@@ -39,7 +41,11 @@ nav {
   justify-content: space-between;
   height: 80px;
   box-shadow: 0 5px 80px rgba(0, 0, 0, 0.1);
+  
+
 }
+/* position: relative;
+z-index: 10; */
 
 nav .logo,
 footer .logo {
@@ -1201,81 +1207,10 @@ footer .bottom .links a{
 
 
 
-     /* ESTILO DOS CARDS DE PLANOS (Inicio)*/
-
-     .planos {
-        padding: 40px;
-        background: #f9f9f9;
-        text-align: center;
-      }
-
-      .planos h2 {
-        margin-bottom: 40px;
-        font-size: 38px;
-        color: #333;
-      }
-
-      .card-container {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .card {
-        background: white;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 280px;
-        transition: 0.3s;
-      }
-      .card:hover {
-  transform: scale(1.03);
-  border: 2px solid #0073ff;
-  box-shadow: 0 0 12px rgb(3, 255, 242);
-      }
 
 
   
-    
-      .card h3 {
-        font-size: 30px;
-        color: #0073ff;
-      }
-
-      .preco {
-        font-size: 32px;
-        font-weight: bold;
-        margin: 10px 0;
-      }
-
-      .preco .de {
-        text-decoration: line-through;
-        color: #999;
-        font-size: 26px;
-      }
-    
-
-      .economia {
-        color: green;
-        font-weight: bold;
-        margin: 10px 0;
-      }
-    
-
-      .card button {
-        background: #ffcc00;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 8px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-
-      .card button:hover {
-        background: #e6b800;
-      }
+  
       
     
       /* Teste nos Cards na aba Serviços*/
