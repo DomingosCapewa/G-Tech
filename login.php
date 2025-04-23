@@ -2,7 +2,7 @@
 require_once 'includes/config.php';
 
 if (isLoggedIn()) {
-    redirect('/facul/user/dashboard.php');
+    redirect('/user/dashboard.php');
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['is_admin'] = true;
+// $_SESSION['is_admin'] = true;
 
 
 define('DB_HOST', 'localhost');

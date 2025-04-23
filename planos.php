@@ -52,11 +52,10 @@ $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <i class="bi bi-exclamation-triangle-fill me-2"></i> Você precisa estar logado para assinar um plano.
                         </div>
                         <div class="d-grid gap-2">
-                            <a href="/facul/login.php" class="btn btn-primary">Fazer Login</a>
-                            <a href="/facul/register.php" class="btn btn-outline-primary">Criar Conta</a>
+                            <a href="/Facul/login.php" class="btn btn-primary">Fazer Login</a>
+                            <a href="/Facul/register.php" class="btn btn-outline-primary">Criar Conta</a>
                         </div>
                     <?php else: 
-                        // Verificar se usuário já tem este plano
                         $stmt = $pdo->prepare("SELECT * FROM assinaturas WHERE usuario_id = ? AND plano_id = ? AND status = 'ativo'");
                         $stmt->execute([$_SESSION['user_id'], $plano['id']]);
                         $assinatura = $stmt->fetch();
@@ -65,11 +64,11 @@ $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <div class="alert alert-info">
                                 <i class="bi bi-info-circle-fill me-2"></i> Você já possui este plano ativo.
                             </div>
-                            <a href="/facul/user/dashboard.php" class="btn btn-primary w-100">Ir para meu painel</a>
+                            <a href="/Facul/user/dashboard.php" class="btn btn-primary w-100">Ir para meu painel</a>
                         <?php else: ?>
                             <p>Você está prestes a assinar o plano <strong><?= htmlspecialchars($plano['nome']) ?></strong> por <strong>R$ <?= number_format($plano['preco'], 2, ',', '.') ?> mensais</strong>.</p>
                             <p>Confirme abaixo para prosseguir com o pagamento.</p>
-                            <form action="/facul/pagamento.php" method="post">
+                            <form action="/Facul/pagamento.php" method="post">
                                 <input type="hidden" name="plano_id" value="<?= $plano['id'] ?>">
                                 <div class="d-grid gap-2">
                                     <button type="submit" class="btn btn-primary">Confirmar Assinatura</button>
