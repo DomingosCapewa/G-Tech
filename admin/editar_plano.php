@@ -3,23 +3,21 @@ require_once '../includes/config.php';
 require_once '../includes/header.php';
 
 if (!isLoggedIn() || !isAdmin()) {
-    redirect('/facul/login.php');
+    redirect('/Facul/login.php');
 }
 
 
-$plano_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-
-$plano = [];
-if ($plano_id > 0) {
-    $stmt = $pdo->prepare("SELECT * FROM planos WHERE id = ?");
-    $stmt->execute([$plano_id]);
-    $plano = $stmt->fetch(PDO::FETCH_ASSOC);
+$usuarios = [];
+if ($usuario_id > 0) {
+    $stmt = $pdo->prepare("SELECT * FROM usuarios");
+   
+    $usuarios = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-if (!$plano) {
-    $_SESSION['error'] = "Plano não encontrado.";
-    redirect('/facul/admin/planos.php');
+if (!$usuarios) {
+    $_SESSION['error'] = "Sem usuarios";
+    redirect('/Facul/admin/planos.php');
 }
 
 
@@ -53,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute($dados);
         
         $_SESSION['success'] = "Plano atualizado com sucesso!";
-        redirect('/facul/admin/planos.php');
+        redirect('/Facul/admin/planos.php');
         
     } catch (PDOException $e) {
         $error = "Erro ao atualizar plano: " . $e->getMessage();
@@ -160,13 +158,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-save"></i> Salvar Alterações
                     </button>
-                    <a href="/facul/admin/planos.php" class="btn btn-secondary">
+                    <a href="/Facul/admin/planos.php" class="btn btn-secondary">
                         <i class="bi bi-x-circle"></i> Cancelar
                     </a>
                 </div>
             </form>
         </div>
     </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </div>
 
 <?php require_once '../includes/footer.php'; ?>

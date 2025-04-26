@@ -158,10 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Simular processamento do pagamento (7 segundos)
         setTimeout(function() {
-            // Aqui você faria a requisição AJAX para processar o pagamento
-            // Mas vamos simular um sucesso
-            
-            // Redirecionar para página de sucesso
+             
             window.location.href = '/facul/user/dashboard.php?payment=success';
         }, 7000);
     });

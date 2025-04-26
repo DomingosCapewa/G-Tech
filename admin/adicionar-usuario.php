@@ -1,9 +1,12 @@
-<?php
-require_once 'includes/config.php';
 
-if (isLoggedIn()) {
-    redirect('/user/dashboard.php');
+<?php 
+require_once '../includes/config.php';
+require_once '../includes/header.php';
+
+if (!isLoggedIn() || !isAdmin()) {
+    redirect('/login.php');
 }
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
@@ -14,18 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)");
         $stmt->execute([$nome, $email, $senha]);
         
-        $_SESSION['success'] = "Conta criada com sucesso! Faça login.";
-        redirect('/login.php');
+        $_SESSION['success'] = "Conta criada com sucesso!";
+        redirect('/admin/usuarios.php');
     } catch (PDOException $e) {
         if ($e->getCode() == 23000) {
             $error = "Este email já está em uso.";
         } else {
-            $error = "Erro ao criar conta. Tente novamente.";
+            $error = "Erro ao crar conta. Tente novamente.";
         }
     }
 }
-
-require_once 'includes/header.php';
 ?>
 
 <div class="container my-5">
@@ -33,7 +34,7 @@ require_once 'includes/header.php';
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0"><i class="bi bi-person-plus me-2"></i> Criar Conta</h4>
+                    <h4 class="mb-0"><i class="bi bi-person-plus me-2"></i> Adicinar usuário</h4>
                 </div>
                 <div class="card-body">
                     <?php if (isset($error)): ?>
@@ -55,7 +56,6 @@ require_once 'includes/header.php';
                         </div>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary">Criar Conta</button>
-                            <a href="/facul/login.php" class="btn btn-outline-secondary">Já tenho uma conta</a>
                         </div>
                     </form>
                 </div>
@@ -65,4 +65,8 @@ require_once 'includes/header.php';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </div>
 
-<?php require_once 'includes/footer.php'; ?>
+
+<?= 
+
+require_once '../includes/footer.php'
+?>

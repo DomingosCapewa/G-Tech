@@ -43,13 +43,11 @@ if (isset($_GET['delete'])) {
         $stmt->execute([$id]);
         $assinaturas = $stmt->fetch()['total'];
         
-        if ($assinaturas > 0) {
-            $_SESSION['error'] = "Não é possível deletar este plano pois existem assinaturas ativas vinculadas a ele.";
-        } else {
+       
             $stmt = $pdo->prepare("DELETE FROM planos WHERE id = ?");
             $stmt->execute([$id]);
             $_SESSION['success'] = "Plano deletado com sucesso!";
-        }
+       
         
         redirect('/admin/planos.php');
     } catch (PDOException $e) {
@@ -170,6 +168,7 @@ require_once '../includes/header.php';
             </table>
         </div>
     </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </div>
 
 <?php require_once '../includes/footer.php'; ?>

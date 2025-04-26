@@ -29,16 +29,16 @@
     <!-- NAV -->
     <nav>
       <div class="logo">
-      <img src="/facul/assets/img/logo G-TECH.jpg" alt="Logo G-TECH" />
-        <a href="/facul/index.php">G-TECH</a>
+      <img src="/Facul/assets/img/logo G-TECH.jpg" alt="Logo G-TECH" />
+        <a href="/Facul/index.php">G-TECH</a>
       </div>
       <ul>
-        <li><a href="/facul/index.php">Inicio</a></li>
-        <li><a href="/facul/public/pages/servicos.php">Serviços</a></li>
-        <li><a href="/facul/planos.php">Planos</a></li>
-        <li><a href="/facul/public/pages/sobreNos.php">Sobre nós</a></li>
-        <li><a href="/facul/public/pages/projetos.php">Projetos</a></li>
-        <li><a href="/facul/index.php#feedback">Comentários</a></li>
+        <li><a href="/Facul/index.php">Inicio</a></li>
+        <li><a href="/Facul/public/pages/servicos.php">Serviços</a></li>
+        <!--<li><a href="/Facul/planos.php">Planos</a></li> vamos rever sobre os planos no index ou aqui-->
+        <li><a href="/Facul/public/pages/sobreNos.php">Sobre nós</a></li>
+     <!--   <li><a href="/Facul/public/pages/projetos.php">Projetos</a></li> remover todo o conteúdo sobre esse assunto-->
+        <li><a href="/Facul/index.php#feedback">Comentários</a></li>
       </ul>
     
       <ul class="navbar-nav">
@@ -49,32 +49,34 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <?php if (isAdmin()): ?>
-                                    <li><a class="dropdown-item" href="/facul/admin/dashboard.php">Painel Admin</a></li>
+                                    <li><a class="dropdown-item" href="/Facul/admin/dashboard.php">Painel Admin</a></li>
                                 <?php else: ?>
-                                    <li><a class="dropdown-item" href="/facul/user/dashboard.php">Painel do Usuário</a></li>
+                                    <li><a class="dropdown-item" href="/Facul/user/dashboard.php">Painel do Usuário</a></li>
                                 <?php endif; ?>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="/facul/logout.php">Sair</a></li>
+                                <li><a class="dropdown-item" href="/Facul/logout.php">Sair</a></li>
                             </ul>
                         </li>
                     <?php else: ?>
+                    <ul>
                         <li class="nav-item">
-                            <a class="nav-link" href="/facul/login.php">Login</a>
+                            <a class="nav-link" href="/Facul/login.php">Login</a> 
+                            </li>
+                            <a class="nav-link" href="/Facul/register.php">Registrar</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/facul/register.php">Registrar</a>
-                        </li>
+                        <ul>
                     <?php endif; ?>
                 </ul>
             </div>
         </div>
     </nav>
     </nav>
-<!-- 
-    <script>
-      function openMenu() {
-        document.querySelector('nav').classList.toggle('open');
-      }
+
+    <!--<script>
+    //   function openMenu() {
+    //     document.querySelector('nav').classList.toggle('open');
+    //   }
     </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

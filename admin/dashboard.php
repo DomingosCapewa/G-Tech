@@ -18,11 +18,23 @@ $stmt = $pdo->query("SELECT COUNT(*) as total FROM planos");
 $totalPlanos = $stmt->fetch()['total'];
 
 
-$stmt = $pdo->query("SELECT p.*, u.nome as usuario_nome 
-                     FROM pagamentos p 
-                     JOIN assinaturas a ON p.assinatura_id = a.id 
-                     JOIN usuarios u ON a.usuario_id = u.id 
-                     ORDER BY p.data_pagamento DESC LIMIT 5");
+$stmt = $pdo->query("
+    SELECT 
+        p.id,
+        p.valor,
+        p.metodo,
+        p.data_pagamento,
+        p.status,
+        u.nome AS usuario_nome,
+        pl.nome AS plano_nome
+    FROM pagamentos p
+    JOIN assinaturas a ON p.assinatura_id = a.id
+    JOIN usuarios u ON a.usuario_id = u.id
+    JOIN planos pl ON a.plano_id = pl.id
+    ORDER BY p.data_pagamento DESC 
+    LIMIT 5
+");
+
 $ultimosPagamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 require_once '../includes/header.php';
@@ -119,17 +131,20 @@ require_once '../includes/header.php';
                 </div>
                 <div class="card-body">
                     <div class="d-grid gap-2">
-                        <a href="/facul/admin/planos.php" class="btn btn-primary">
-                            <i class="bi bi-plus-circle-fill me-2"></i> Gerenciar Planos
-                        </a>
-                        <a href="/facul/admin/usuarios.php" class="btn btn-secondary">
-                            <i class="bi bi-people-fill me-2"></i> Gerenciar Usuários
-                        </a>
+                        <a href="<?= BASE_URL ?>/admin/planos.php" class="btn btn-primary">
+    <i class="bi bi-plus-circle-fill me-2"></i> Gerenciar Planos
+</a>
+
+<a href="<?= BASE_URL ?>/admin/usuarios.php" class="btn btn-secondary">
+    <i class="bi bi-people-fill me-2"></i> Gerenciar Usuários
+</a>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </div>
 
 <?php require_once '../includes/footer.php'; ?>
