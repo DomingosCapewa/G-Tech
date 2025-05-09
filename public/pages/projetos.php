@@ -23,7 +23,7 @@ require_once '../../includes/header.php';
               </div>
           </div>
           <div class="item">
-              <img src="/Facul/assets/img/LGPD.JPEG">
+              <img src="/G-tech/assets/img/LGPD.JPEG">
               <div class="info">
                   <h4>Nuvem on-line</h4>
                   <p>

@@ -2,7 +2,7 @@
 require_once '../includes/config.php';
 
 if (!isLoggedIn()) {
-    redirect('/facul/login.php');
+    redirect('/G-tech/login.php');
 }
 
 // Buscar assinatura ativa do usuário
@@ -86,7 +86,7 @@ require_once '../includes/header.php';
                         </ul>
                     </div>
                     <div class="card-footer bg-transparent">
-                        <a href="/facul/planos.php" class="btn btn-outline-primary w-100">Assinar Plano</a>
+                        <a href="/G-tech/planos.php" class="btn btn-outline-primary w-100">Assinar Plano</a>
                     </div>
                 </div>
             </div>

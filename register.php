@@ -55,14 +55,13 @@ require_once 'includes/header.php';
                         </div>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary">Criar Conta</button>
-                            <a href="/facul/login.php" class="btn btn-outline-secondary">Já tenho uma conta</a>
+                            <a href="/G-tech/login.php" class="btn btn-outline-secondary">Já tenho uma conta</a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </div>
 
 <?php require_once 'includes/footer.php'; ?>

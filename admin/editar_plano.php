@@ -3,7 +3,7 @@ require_once '../includes/config.php';
 require_once '../includes/header.php';
 
 if (!isLoggedIn() || !isAdmin()) {
-    redirect('/Facul/login.php');
+    redirect('/G-tech/login.php');
 }
 
 
@@ -17,7 +17,7 @@ if ($usuario_id > 0) {
 
 if (!$usuarios) {
     $_SESSION['error'] = "Sem usuarios";
-    redirect('/Facul/admin/planos.php');
+    redirect('/G-tech/admin/planos.php');
 }
 
 
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute($dados);
         
         $_SESSION['success'] = "Plano atualizado com sucesso!";
-        redirect('/Facul/admin/planos.php');
+        redirect('/G-tech/admin/planos.php');
         
     } catch (PDOException $e) {
         $error = "Erro ao atualizar plano: " . $e->getMessage();
@@ -158,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-save"></i> Salvar Alterações
                     </button>
-                    <a href="/Facul/admin/planos.php" class="btn btn-secondary">
+                    <a href="/G-tech/admin/planos.php" class="btn btn-secondary">
                         <i class="bi bi-x-circle"></i> Cancelar
                     </a>
                 </div>

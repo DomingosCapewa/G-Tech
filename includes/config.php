@@ -9,7 +9,9 @@ define('DB_PASS', '');
 define('DB_NAME', 'hospedagem');
 
 
-define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/facul');
+
+
+define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/G-tech');
 define('ROOT_PATH', __DIR__ . '/..');
 
 

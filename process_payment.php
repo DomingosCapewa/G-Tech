@@ -4,7 +4,7 @@ require_once 'includes/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['error'] = "Requisição inválida.";
-    header('Location: /Facul/planos.php');
+    header('Location: /G-tech/planos.php');
     exit;
 }
 
@@ -14,7 +14,7 @@ $metodo = $_POST['metodo'] ?? null;
 
 if (!$assinatura_id || !$valor || !$metodo) {
     $_SESSION['error'] = "Dados incompletos para processar o pagamento.";
-    header('Location: /Facul/planos.php');
+    header('Location: /G-tech/planos.php');
     exit;
 }
 
@@ -41,12 +41,11 @@ try {
     $pdo->commit();
 
     $_SESSION['success'] = "Pagamento realizado com sucesso!";
-    header('Location: /Facul/user/dashboard.php?payment=success');
+    header('Location: /G-tech/user/dashboard.php?payment=success');
     exit;
-
 } catch (PDOException $e) {
     $pdo->rollBack();
     $_SESSION['error'] = "Erro ao registrar pagamento: " . $e->getMessage();
-    header('Location: /Facul/user/dashboard.php?payment=error');
+    header('Location: /G-tech/user/dashboard.php?payment=error');
     exit;
 }
