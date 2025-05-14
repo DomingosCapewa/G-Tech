@@ -30,6 +30,13 @@ require_once '../../includes/header.php';
     </div>
   </body> -->
 
+<!DOCTYPE>
+<html>
+<head>
+    <title>Sobre Nós</title>
+    <link rel="../../style.css"
+</head>
+    <body>
   <section class="sobre-nos">
       <h2>Quem Somos</h2>
       <p>A G-TECH é especialista em soluções web, sistemas em nuvem e suporte à infraestrutura. Oferecemos qualidade, inovação e atendimento personalizado para empresas que desejam crescer com tecnologia de ponta.</p>
@@ -51,27 +58,62 @@ require_once '../../includes/header.php';
       </div>
     </section>
   
-    <section class="video-section">
+    <!--<section class="video-section">
       <h2>Conheça-nos Melhor</h2>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/8JI9wQ8sUdQ" title="Apresentação G-TECH" frameborder="0" allowfullscreen></iframe>
 
 
       </div>
-    </section>
+    </section> -->
   
-    <footer class="footer">
+    <!--<footer class="footer">
             <p>© 2025 G-TECH. Todos os direitos reservados.</p>
       <p>
         ❤️ By G-TECH
     </p>
-    </footer>
+    </footer>-->
+    <?php 
+    
+    require_once '../../includes/footer.php'
+    ?>
 
 
     </body>
   
-<style>
-  * {
+<!--<style>
+  
+  
+  /* Vídeo */
+  .video-section {
+    background-color: #eef3f6;
+    padding: 40px 60px;
+    text-align: center;
+  }
+  
+  .video-section h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #003366;
+  }
+  
+  .video-container iframe {
+    width: 100%;
+    max-width: 700px;
+    height: 400px;
+    border-radius: 8px;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+</style> -->
+ <style> 
+ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -160,33 +202,5 @@ require_once '../../includes/header.php';
     color: #005599;
     margin-bottom: 10px;
   }
-  
-  /* Vídeo */
-  .video-section {
-    background-color: #eef3f6;
-    padding: 40px 60px;
-    text-align: center;
-  }
-  
-  .video-section h2 {
-    font-size: 26px;
-    margin-bottom: 20px;
-    color: #003366;
-  }
-  
-  .video-container iframe {
-    width: 100%;
-    max-width: 700px;
-    height: 400px;
-    border-radius: 8px;
-  }
-  
-  /* Footer */
-  .footer {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    padding: 20px;
-  }
-</style>
+  </style>
 </html>

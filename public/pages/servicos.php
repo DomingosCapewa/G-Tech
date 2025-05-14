@@ -4,7 +4,6 @@ require_once '../../includes/config.php';
 require_once '../../includes/header.php';
 ?>
 
-<!--diminuir scala do banner-->
 <section class="hero-experiencias">
 
 </section>
@@ -102,21 +101,9 @@ require_once '../../includes/header.php';
   }
 </script>
 
-<footer>
-  <div class="top">
-    <div class="logo">
-      <img src="/facul/assets/img/logo G-TECH.jpg">
-    </div>
+<?php 
+ require_once '../../includes/footer.php';
 
-  </div>
-  <div class="separator"></div>
-  <div class="bottom">
-    <p>
-      ❤️ By G-TECH
-    </p>
-  </div>
-</footer>
-<script src="script.js"></script>
-</body>
+?>
 
 </html>
