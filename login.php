@@ -36,7 +36,7 @@ require_once 'includes/header.php';
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header bg-dark text-white">
                     <h4 class="mb-0"><i class="bi bi-box-arrow-in-right me-2"></i> Login</h4>
                 </div>
                 <div class="card-body">
@@ -54,7 +54,7 @@ require_once 'includes/header.php';
                             <input type="password" class="form-control" id="senha" name="senha" required>
                         </div>
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">Entrar</button>
+                            <button type="submit" class="btn btn-dark">Entrar</button>
                             <a href="/G-tech/register.php" class="btn btn-outline-secondary">Criar nova conta</a>
                         </div>
                     </form>
