@@ -6,7 +6,7 @@ if (!isLoggedIn()) {
 }
 
 // Buscar assinatura ativa do usuário
-$stmt = $pdo->prepare("SELECT p.*, a.id as assinatura_id, a.data_inicio, a.data_vencimento, a.status 
+$stmt = $pdo->prepare("SELECT p.*, a.id as assinatura_id, a.plano_id, a.data_inicio, a.data_vencimento, a.status 
                        FROM assinaturas a 
                        JOIN planos p ON a.plano_id = p.id 
                        WHERE a.usuario_id = ? 
@@ -36,6 +36,7 @@ if ($planoAtivo && $planoAtivo['status'] === 'ativo') {
     $stmt = $pdo->prepare($sqlPlanos);
     $stmt->execute([$planoAtivo['plano_id']]);
 } else {
+
     $stmt = $pdo->query($sqlPlanos);
 }
 $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
