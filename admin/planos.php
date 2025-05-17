@@ -4,6 +4,9 @@ require_once '../includes/config.php';
 if (!isLoggedIn() || !isAdmin()) {
     redirect('/login.php');
 }
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 
 $stmt = $pdo->query("SELECT * FROM planos ORDER BY preco");

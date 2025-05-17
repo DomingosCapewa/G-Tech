@@ -30,7 +30,7 @@ require_once 'includes/header.php';
 
 <div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-header bg-primary text-white">
                     <h4 class="mb-0"><i class="bi bi-person-plus me-2"></i> Criar Conta</h4>

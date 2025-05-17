@@ -16,7 +16,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO usuarios (nome, email, senha, is_admin) VALUES 
 ('João Silva', 'joao@example.com', 'senha123', 0),
 ('Maria Oliveira', 'maria@example.com', 'senha456', 0),
-('Admin', 'admin@example.com', 'adminsenha', 1);
+('Admin', 'admin@gmail.com', 'adminsenha', 1);
 
 
 -- Tabela: planos
