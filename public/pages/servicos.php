@@ -8,7 +8,7 @@ require_once '../../includes/header.php';
 
 </section>
 
-
+<link rel="stylesheet" href="../../assets/styles/servicos.css">
 <main class="skills" id="skills">
   <div class="skill-items">
     <div class="item">
@@ -54,42 +54,6 @@ require_once '../../includes/header.php';
     </div>
   </div>
 </main>
-<style>
-  .skill-items .item {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 20px;
-    border-radius: 8px;
-    background: #f9f9f9;
-    margin-bottom: 20px;
-  }
-
-  .skill-items .item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-
-  .btn-saiba-mais {
-    margin-top: 10px;
-    padding: 8px 16px;
-    background-color: #00aa55;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-
-  .btn-saiba-mais:hover {
-    background-color: #008744;
-  }
-
-  .detalhes {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #444;
-    display: none;
-  }
-</style>
 <script>
   function mostrarDetalhes(botao) {
     const div = botao.nextElementSibling;
@@ -101,8 +65,8 @@ require_once '../../includes/header.php';
   }
 </script>
 
-<?php 
- require_once '../../includes/footer.php';
+<?php
+require_once '../../includes/footer.php';
 
 ?>
 
