@@ -35,12 +35,9 @@ include_once 'config.php';
     </div>
     <ul>
       <li><a href="/G-tech/index.php">Inicio</a></li>
-      <li><a href="/G-tech/public/pages/servicos.php">Serviços</a></li>
       <li><a href="/G-tech/planos.php">Planos</a></li>
-
+      <li><a href="/G-tech/public/pages/servicos.php">Serviços</a></li>
       <li><a href="/G-tech/public/pages/sobreNos.php">Sobre nós</a></li>
-
-      <li><a href="/G-tech/index.php#feedback">Comentários</a></li>
     </ul>
 
     <ul class="navbar-nav">

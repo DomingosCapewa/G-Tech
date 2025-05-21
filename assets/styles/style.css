@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
+
 html {
   scroll-behavior: smooth;
 }
@@ -1346,11 +1347,11 @@ footer .bottom .links a {
 
   /*scala de banner*/
   .hero-experiencias {
-    background-image: url("/assets/Experiencias.gtech.png"); /* substitui pelo caminho certo */
-    background-size: cover; /* ou 'contain' se quiser ajustar totalmente */
+    background-image: url("/assets/Experiencias.gtech.png"); 
+    background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
-    height: 300px; /* ajusta conforme quiseres, tipo 200px, 400px, etc */
+    height: 300px; 
     display: flex;
     align-items: center;
     justify-content: center;

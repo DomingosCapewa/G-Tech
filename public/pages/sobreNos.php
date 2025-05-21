@@ -15,9 +15,14 @@ require_once '../../includes/header.php';
 <body>
   <section class="sobre-nos">
     <h2>Quem Somos</h2>
-    <p>A G-TECH é especialista em soluções web, sistemas em nuvem e suporte à infraestrutura. Oferecemos qualidade, inovação e atendimento personalizado para empresas que desejam crescer com tecnologia de ponta.</p>
-    <p>Com uma equipa apaixonada por tecnologia e comprometida com resultados reais e sustentáveis, trabalhamos todos os dias para transformar ideias em soluções digitais eficazes.</p>
-  </section>
+    <p>
+A G-TECH oferece planos acessíveis, confiáveis e altamente seguros para que usuários possam armazenar seus arquivos, documentos e dados importantes online, liberando espaço valioso em seus dispositivos físicos e garantindo acesso rápido, fácil e protegido a qualquer momento, por meio de login e senha exclusivos. Nossa plataforma utiliza tecnologias avançadas de criptografia e protocolos robustos de segurança para proteger suas informações contra acessos não autorizados, ataques cibernéticos e vulnerabilidades, assegurando total confidencialidade e integridade dos dados.
+
+Nossos planos — Básico, Profissional e Empresarial — são cuidadosamente elaborados para se adaptarem às necessidades de diferentes perfis, desde usuários individuais até pequenas, médias e grandes empresas, oferecendo capacidades variadas de armazenamento, performance otimizada e suporte técnico dedicado.
+
+Além disso, na G-TECH, temos um compromisso inabalável com a cibersegurança, investindo continuamente em ferramentas de monitoramento, prevenção contra ameaças digitais e atualizações constantes para manter o ambiente seguro. Nosso foco é entregar um serviço personalizado, eficiente e ágil, garantindo que cada cliente receba não apenas armazenamento em nuvem, mas também uma solução completa que protege seus dados e contribui para o crescimento e a tranquilidade do seu negócio.
+
+Confie na G-TECH para cuidar do seu armazenamento digital com excelência, segurança e total foco nas suas necessidades.  </section>
 
   <section class="cards-info">
     <div class="card">
@@ -57,7 +62,7 @@ require_once '../../includes/header.php';
 
 </body>
 
-<!-- <style>
+ <style>
   /* Vídeo */
   .video-section {
     background-color: #eef3f6;
@@ -176,6 +181,6 @@ require_once '../../includes/header.php';
     color: #005599;
     margin-bottom: 10px;
   }
-</style> -->
+</style> 
 
 </html>

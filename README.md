@@ -67,5 +67,4 @@ Para colaborar, siga os passos abaixo:
 
 Consulte as [issues](https://github.com/DomingosCapewa/G-Tech/issues) para sugestões, bugs ou melhorias.
 
-## Licença
 
