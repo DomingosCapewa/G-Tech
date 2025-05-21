@@ -10,7 +10,6 @@ O G-Tech é um sistema desenvolvido para facilitar e otimizar processos, utiliza
 
 - Cadastro e gerenciamento de usuários
 - Controle de permissões e autenticação
-- Geração de relatórios
 - Interface responsiva e intuitiva
 - Integração com banco de dados MySQL
 
