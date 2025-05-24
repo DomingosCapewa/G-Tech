@@ -11,7 +11,7 @@ if (!isLoggedIn() || !isAdmin()) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $user_id = (int)$_POST['user_id'];
-    
+
     try {
         switch ($_POST['action']) {
             case 'toggle_admin':
@@ -19,13 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 $stmt->execute([$user_id]);
                 $_SESSION['success'] = "Privilégios de administrador atualizados!";
                 break;
-                
+
             case 'delete':
-               
+
                 $stmt = $pdo->prepare("SELECT COUNT(*) FROM assinaturas WHERE usuario_id = ? AND status = 'ativo'");
                 $stmt->execute([$user_id]);
                 $assinaturas_ativas = $stmt->fetchColumn();
-                
+
                 if ($assinaturas_ativas > 0) {
                     $_SESSION['error'] = "Não é possível excluir usuário com assinaturas ativas.";
                 } else {
@@ -35,10 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 }
                 break;
         }
-        
-        
+
+
         redirect('/admin/usuarios.php');
-        
     } catch (PDOException $e) {
         $error = "Erro ao processar ação: " . $e->getMessage();
     }
@@ -118,11 +117,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                             <?= $usuario['is_admin'] ? 'Remover Admin' : 'Tornar Admin' ?>
                                                         </button>
                                                     </form>
-
-                                                    <!--<a href="editar-usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-sm btn-outline-primary">
-                                                        <i class="bi bi-pencil"></i> Editar
-                                                    </a> rever com o pessoal se faz sentido o adm poder editar o usuario -->
-
                                                     <form method="POST" class="d-inline" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
                                                         <input type="hidden" name="user_id" value="<?= $usuario['id'] ?>">
                                                         <input type="hidden" name="action" value="delete">
@@ -150,7 +144,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </div>
 
-<?php require_once __DIR__ . '/../includes/footer.php';?>
+<?php require_once __DIR__ . '/../includes/footer.php'; ?>

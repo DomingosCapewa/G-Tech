@@ -92,7 +92,7 @@ function setupInputMasks() {
 
 
 function mostrarDetalhes(botao) {
-  // Fecha todos os detalhes primeiro
+ 
   const todosOsDetalhes = document.querySelectorAll('.detalhes');
   todosOsDetalhes.forEach((detalhe) => {
     if (detalhe !== botao.nextElementSibling) {
@@ -100,7 +100,7 @@ function mostrarDetalhes(botao) {
     }
   });
 
-  // Alterna o card clicado
+
   const detalheAtual = botao.nextElementSibling;
   if (detalheAtual.style.display === "block") {
     detalheAtual.style.display = "none";

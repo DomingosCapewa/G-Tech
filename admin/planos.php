@@ -41,7 +41,7 @@ if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     
     try {
-        // Verificar se há assinaturas ativas para este plano
+      
         $stmt = $pdo->prepare("SELECT COUNT(*) as total FROM assinaturas WHERE plano_id = ? AND status = 'ativo'");
         $stmt->execute([$id]);
         $assinaturas = $stmt->fetch()['total'];

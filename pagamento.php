@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['plano_id'])) {
 
 
     $data_vencimento = date('Y-m-d H:i:s', strtotime('+1 month'));
-    $stmt = $pdo->prepare("INSERT INTO assinaturas (usuario_id, plano_id, data_vencimento) VALUES (?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO assinaturas (usuario_id,  plano_id, data_vencimento) VALUES (?, ?, ?)");
     $stmt->execute([$_SESSION['user_id'], $plano_id, $data_vencimento]);
     $assinatura_id = $pdo->lastInsertId();
 
@@ -149,18 +149,7 @@ require_once 'includes/header.php';
         const spinner = document.getElementById('spinner');
 
         paymentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Mostrar spinner e desativar botão
-            buttonText.textContent = 'Processando pagamento...';
-            spinner.classList.remove('d-none');
-            submitBtn.disabled = true;
-
-            // Simular processamento do pagamento (7 segundos)
-            setTimeout(function() {
-
-                window.location.href = '/G-tech/user/dashboard.php?payment=success';
-            }, 7000);
+           
         });
     });
 </script>

@@ -5,7 +5,7 @@ if (!isLoggedIn()) {
     redirect('/login.php');
 }
 
-// Buscar assinatura ativa do usuário
+
 $stmt = $pdo->prepare("SELECT p.*, a.id as assinatura_id, a.plano_id, a.data_inicio, a.data_vencimento, a.status 
                        FROM assinaturas a 
                        JOIN planos p ON a.plano_id = p.id 
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancelar_plano'])) {
     }
 }
 
-// Buscar todos os planos disponíveis (exceto o atual se houver)
+
 $sqlPlanos = "SELECT * FROM planos";
 if ($planoAtivo && $planoAtivo['status'] === 'ativo') {
     $sqlPlanos .= " WHERE id != ?";

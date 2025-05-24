@@ -2,7 +2,7 @@
 require_once '../includes/config.php';
 require_once '../includes/header.php';
 
-// Verificar se o usuário está logado e é admin
+
 if (!isLoggedIn() || !isAdmin()) {
     redirect('/G-tech/login.php');
 }
@@ -12,22 +12,22 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Verificar se o ID do plano foi passado na URL
+
 if (isset($_GET['id'])) {
     $plano_id = $_GET['id'];
 
-    // Buscar o plano no banco de dados
+   
     $stmt = $pdo->prepare("SELECT * FROM planos WHERE id = ?");
     $stmt->execute([$plano_id]);
     $plano = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Caso o plano não seja encontrado
+    
     if (!$plano) {
         $_SESSION['error'] = "Plano não encontrado.";
         redirect('/admin/planos.php');
     }
 } else {
-    // Caso o ID não seja passado na URL
+    
     $_SESSION['error'] = "Plano não especificado.";
     redirect('/admin/planos.php');
 }
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ];
 
     try {
-        // Atualizar plano no banco de dados
+        
         $stmt = $pdo->prepare("UPDATE planos SET 
                               nome = :nome,
                               descricao = :descricao,
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $stmt->execute($dados);
 
-        // Mensagem de sucesso e redirecionamento
+        
         $_SESSION['success'] = "Plano atualizado com sucesso!";
         redirect('/admin/planos.php');
     } catch (PDOException $e) {

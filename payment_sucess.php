@@ -21,17 +21,11 @@ if (!$assinatura_id || !$valor || !$metodo) {
 $pdo->beginTransaction();
 
 try {
-    // Registrar o pagamento
     $stmt = $pdo->prepare("INSERT INTO pagamentos 
                           (assinatura_id, valor, metodo, status, data_pagamento) 
                           VALUES (?, ?, ?, 'completo', NOW())");
-    $stmt->execute([
-        $assinatura_id,
-        $valor,
-        $metodo
-    ]);
+    $stmt->execute([$assinatura_id, $valor, $metodo]);
 
-    // Atualizar assinatura
     $vencimento = date('Y-m-d H:i:s', strtotime('+1 month'));
     $stmt = $pdo->prepare("UPDATE assinaturas 
                           SET status = 'ativo', data_vencimento = ? 
@@ -40,10 +34,9 @@ try {
 
     $pdo->commit();
 
-    $_SESSION['success'] = "Pagamento realizado com sucesso!";
+    // $_SESSION['success'] = "Pagamento realizado com sucesso!";
     header('Location: /G-tech/user/dashboard.php?payment=success');
     exit;
-
 } catch (PDOException $e) {
     $pdo->rollBack();
     $_SESSION['error'] = "Erro ao registrar pagamento: " . $e->getMessage();

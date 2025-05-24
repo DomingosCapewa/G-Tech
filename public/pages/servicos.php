@@ -3,10 +3,11 @@ require_once '../../includes/config.php';
 require_once '../../includes/header.php';
 ?>
 
-<!-- Hero com imagem de fundo e os cards sobrepostos -->
+<link rel="stylesheet" href="../../assets/styles/servicos.css">
+
 <section class="hero-experiencias">
   <div class="conteudo-hero">
-   
+
 
     <main class="skills" id="skills">
       <div class="skill-items">
@@ -54,7 +55,7 @@ require_once '../../includes/header.php';
   </div>
 </section>
 
-<link rel="stylesheet" href="../../assets/styles/servicos.css">
+
 <script>
   function mostrarDetalhes(botao) {
     const todosDetalhes = document.querySelectorAll(".detalhes");
@@ -69,6 +70,7 @@ require_once '../../includes/header.php';
     detalhes.style.display = (detalhes.style.display === "block") ? "none" : "block";
   }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <?php
-require_once '../../includes/footer.php';?>
+require_once '../../includes/footer.php'; ?>

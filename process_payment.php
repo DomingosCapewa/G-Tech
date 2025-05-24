@@ -40,7 +40,7 @@ try {
 
     $pdo->commit();
 
-    $_SESSION['success'] = "Pagamento realizado com sucesso!";
+    // $_SESSION['success'] = "Pagamento realizado com sucesso!";
     header('Location: /G-tech/user/dashboard.php?payment=success');
     exit;
 } catch (PDOException $e) {
