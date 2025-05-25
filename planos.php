@@ -2,7 +2,6 @@
 require_once 'includes/config.php';
 require_once 'includes/header.php';
 
-
 $stmt = $pdo->query("SELECT * FROM planos");
 $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -12,7 +11,6 @@ $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <section class="planos py-5">
     <div class="container">
-
         <div class="row g-4 justify-content-center">
             <?php foreach ($planos as $plano): ?>
                 <div class="col-md-4">
@@ -31,7 +29,7 @@ $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="bg-light p-3 rounded mb-4">
                                 <p class="text-success fw-bold mb-2">
-                                    <i class="bi bi-arrow-down-circle"></i> Economize até R$ <?= number_format($plano['economia'], 2, ',', '.') ?>
+                                    <i class="bi bi-arrow-down-circle"></i> Economize até R$ <?= number_format($plano['preco_original'] - $plano['preco'], 2, ',', '.') ?>
                                 </p>
                                 <p class="mb-0">
                                     <i class="bi bi-check-circle text-primary"></i> 1 ano de domínio online grátis
@@ -95,7 +93,7 @@ $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 <?php endforeach; ?>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</div>
 
 <?php require_once 'includes/footer.php'; ?>

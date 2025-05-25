@@ -8,7 +8,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
 $stmt = $pdo->query("SELECT * FROM planos ORDER BY preco");
 $planos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -17,18 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_plano'])) {
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $preco = $_POST['preco'];
+    $preco_original = $_POST['preco_original'];
     $armazenamento = $_POST['armazenamento'];
     $largura_banda = $_POST['largura_banda'];
     $sites = $_POST['sites'];
     $contas_email = $_POST['contas_email'];
     $banco_dados = $_POST['banco_dados'];
     $dominio_gratis = isset($_POST['dominio_gratis']) ? 1 : 0;
-    
+
     try {
-        $stmt = $pdo->prepare("INSERT INTO planos (nome, descricao, preco, armazenamento, largura_banda, sites, contas_email, banco_dados, dominio_gratis) 
-                              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$nome, $descricao, $preco, $armazenamento, $largura_banda, $sites, $contas_email, $banco_dados, $dominio_gratis]);
-        
+        $stmt = $pdo->prepare("INSERT INTO planos (nome, descricao, preco, preco_original, armazenamento, largura_banda, sites, contas_email, banco_dados, dominio_gratis) 
+                              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$nome, $descricao, $preco, $preco_original, $armazenamento, $largura_banda, $sites, $contas_email, $banco_dados, $dominio_gratis]);
+
         $_SESSION['success'] = "Plano adicionado com sucesso!";
         redirect('/admin/planos.php');
     } catch (PDOException $e) {
@@ -36,22 +36,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_plano'])) {
     }
 }
 
-
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    
+
     try {
-      
         $stmt = $pdo->prepare("SELECT COUNT(*) as total FROM assinaturas WHERE plano_id = ? AND status = 'ativo'");
         $stmt->execute([$id]);
         $assinaturas = $stmt->fetch()['total'];
-        
-       
-            $stmt = $pdo->prepare("DELETE FROM planos WHERE id = ?");
-            $stmt->execute([$id]);
-            $_SESSION['success'] = "Plano deletado com sucesso!";
-       
-        
+
+        $stmt = $pdo->prepare("DELETE FROM planos WHERE id = ?");
+        $stmt->execute([$id]);
+        $_SESSION['success'] = "Plano deletado com sucesso!";
+
         redirect('/admin/planos.php');
     } catch (PDOException $e) {
         $error = "Erro ao deletar plano: " . $e->getMessage();
@@ -63,14 +59,14 @@ require_once '../includes/header.php';
 
 <div class="container my-5">
     <h2 class="mb-4"><i class="bi bi-collection me-2"></i> Gerenciar Planos</h2>
-    
+
     <?php if (isset($error)): ?>
         <div class="alert alert-danger"><?= $error ?></div>
     <?php elseif (isset($_SESSION['success'])): ?>
         <div class="alert alert-success"><?= $_SESSION['success'] ?></div>
         <?php unset($_SESSION['success']); ?>
     <?php endif; ?>
-    
+
     <div class="card mb-4">
         <div class="card-header">
             <h5 class="mb-0"><i class="bi bi-plus-circle me-2"></i> Adicionar Novo Plano</h5>
@@ -78,13 +74,17 @@ require_once '../includes/header.php';
         <div class="card-body">
             <form method="POST">
                 <div class="row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="nome" class="form-label">Nome do Plano</label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
                     </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="preco" class="form-label">Preço (R$)</label>
                         <input type="number" step="0.01" class="form-control" id="preco" name="preco" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="preco_original" class="form-label">Preço original (R$)</label>
+                        <input type="number" step="0.01" class="form-control" id="preco_original" name="preco_original" required>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -94,7 +94,6 @@ require_once '../includes/header.php';
                 <div class="row">
                     <div class="col-md-3 mb-3">
                         <label for="armazenamento" class="form-label">Armazenamento</label>
-                        <input type="text" class
                         <input type="text" class="form-control" id="armazenamento" name="armazenamento" required>
                     </div>
                     <div class="col-md-3 mb-3">
@@ -171,7 +170,8 @@ require_once '../includes/header.php';
             </table>
         </div>
     </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </div>
 
 <?php require_once '../includes/footer.php'; ?>

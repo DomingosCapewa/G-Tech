@@ -1,6 +1,11 @@
 <?php
 
 require_once 'includes/config.php';
+$success = '';
+if (isset($_SESSION['success'])) {
+    $success = $_SESSION['success'];
+    unset($_SESSION['success']);
+}
 
 if (isLoggedIn()) {
     redirect('/user/dashboard.php');
@@ -36,6 +41,9 @@ require_once 'includes/header.php';
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-4">
+            <?php if (!empty($success)): ?>
+        <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
+    <?php endif; ?>
             <div class="card">
                 <div class="card-header bg-primary text-white">
                     <h4 class="mb-0"><i class="bi bi-box-arrow-in-right me-2"></i> Login</h4>

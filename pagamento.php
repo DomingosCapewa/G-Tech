@@ -1,6 +1,4 @@
-<?php
-require_once 'includes/config.php';
-
+<?php require_once 'includes/config.php';
 if (!isLoggedIn()) {
     $_SESSION['error'] = "Você precisa estar logado para acessar esta página.";
     redirect('/G-tech/login.php');
@@ -8,8 +6,6 @@ if (!isLoggedIn()) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['plano_id'])) {
     $plano_id = $_POST['plano_id'];
-
-
     $stmt = $pdo->prepare("SELECT * FROM planos WHERE id = ?");
     $stmt->execute([$plano_id]);
     $plano = $stmt->fetch();
@@ -19,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['plano_id'])) {
         redirect('/planos.php');
     }
 
-
     $stmt = $pdo->prepare("SELECT * FROM assinaturas WHERE usuario_id = ? AND plano_id = ? AND status = 'ativo'");
     $stmt->execute([$_SESSION['user_id'], $plano_id]);
     $assinatura = $stmt->fetch();
@@ -28,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['plano_id'])) {
         $_SESSION['info'] = "Você já possui este plano ativo.";
         redirect('/user/dashboard.php');
     }
-
 
     $data_vencimento = date('Y-m-d H:i:s', strtotime('+1 month'));
     $stmt = $pdo->prepare("INSERT INTO assinaturas (usuario_id,  plano_id, data_vencimento) VALUES (?, ?, ?)");
@@ -103,16 +97,14 @@ require_once 'includes/header.php';
 
                         <div id="pixFields" style="display: none;">
                             <div class="alert alert-info">
-                                <i class="bi bi-info-circle-fill me-2"></i> Após confirmar, você será redirecionado para gerar o QR Code Pix.
+                                <i class="bi bi-info-circle-fill me-2"></i> Após confirmar, você será redirecionado para o seu painel.
                             </div>
                         </div>
 
                         <div class="d-grid gap-2 mt-4">
                             <button type="submit" class="btn btn-primary" id="submitBtn">
                                 <span id="buttonText">Confirmar Pagamento</span>
-                                <div id="spinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
+                                <span id="spinner" class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true" style="display: none;"></span>
                             </button>
                         </div>
                     </form>
@@ -149,7 +141,17 @@ require_once 'includes/header.php';
         const spinner = document.getElementById('spinner');
 
         paymentForm.addEventListener('submit', function(e) {
-           
+            e.preventDefault(); // impede o envio imediato do formulário
+
+
+            spinner.style.display = 'inline-block';
+            submitBtn.disabled = true;
+            buttonText.textContent = 'Processando...';
+
+
+            setTimeout(function() {
+                paymentForm.submit();
+            }, 3000);
         });
     });
 </script>

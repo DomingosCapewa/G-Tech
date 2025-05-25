@@ -21,7 +21,7 @@ if (!$assinatura_id || !$valor || !$metodo) {
 $pdo->beginTransaction();
 
 try {
-    // Registrar o pagamento
+    
     $stmt = $pdo->prepare("INSERT INTO pagamentos 
                           (assinatura_id, valor, metodo, status, data_pagamento) 
                           VALUES (?, ?, ?, 'completo', NOW())");
