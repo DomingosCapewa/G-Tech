@@ -9,11 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
-    
+
     try {
         $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)");
         $stmt->execute([$nome, $email, $senha]);
-        
+
         $_SESSION['success'] = "Conta criada com sucesso! Faça login.";
         redirect('/login.php');
     } catch (PDOException $e) {
@@ -39,7 +39,7 @@ require_once 'includes/header.php';
                     <?php if (isset($error)): ?>
                         <div class="alert alert-danger"><?= $error ?></div>
                     <?php endif; ?>
-                    
+
                     <form method="POST">
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome Completo</label>
