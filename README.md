@@ -1,69 +1,117 @@
-# G-Tech
 
-Bem-vindo ao repositório do **G-Tech**!
+# G-TECH – Plataforma de Gestão de Hospedagem na Nuvem
+
+![G-TECH Logo](https://dummyimage.com/600x200/000/fff&text=G-TECH)
 
 ## Descrição
 
-O G-Tech é um sistema desenvolvido para facilitar e otimizar processos, utilizando tecnologias modernas para garantir eficiência, segurança e uma ótima experiência de uso.
+**G-TECH** é uma aplicação web desenvolvida em **PHP** com **MySQL**, que simula uma plataforma completa de **gestão de planos de hospedagem na nuvem**.  
+O sistema permite que usuários escolham e assinem planos, façam pagamentos e gerenciem sua conta. Além disso, possui um painel administrativo para gestão de usuários, planos e assinaturas.
 
 ## Funcionalidades
 
-- Cadastro e gerenciamento de usuários
-- Controle de permissões e autenticação
-- Interface responsiva e intuitiva
-- Integração com banco de dados MySQL
+### Usuário
+* Cadastro e login seguro com hash de senha.  
+* Escolha e assinatura de planos de hospedagem.  
+* Processamento de pagamento com métodos variados (Cartão e PIX).  
+* Cancelamento de assinatura.  
+ * Painel do usuário com informações sobre plano ativo e histórico.
 
-## Tecnologias Utilizadas
+### Administrador
+✅ Painel administrativo com controle total:  
+- Cadastro, edição e exclusão de planos.  
+- Visualização de métricas e últimos pagamentos.  
+- Gestão de usuários.
 
-- **PHP** — Lógica de negócio e backend
-- **MySQL** — Armazenamento e gerenciamento dos dados
-- **Bootstrap** — Interface moderna e responsiva
+## Tecnologias utilizadas
+
+- **Backend:** PHP 7.4+ com PDO.
+- **Banco de Dados:** MySQL.
+- **Frontend:** HTML5, CSS3, Bootstrap 5.
+- **JavaScript:** interatividade com campos dinâmicos e modais.
+- **Ícones:** FontAwesome, Bootstrap Icons.
+
+## Diferenciais técnicos
+
+-  **Prepared Statements** com PDO para proteção contra SQL Injection.  
+-  **Validação de senhas** com `password_hash()` e `password_verify()`.  
+-  **Transações** (`beginTransaction` / `commit`) para garantir integridade no pagamento.  
+- **Campos dinâmicos** com JavaScript para melhorar UX em formulários.  
+-  Sistema modular com includes de cabeçalho, rodapé e config.
+
+## Pré-requisitos
+
+- PHP 7.4 ou superior  
+- MySQL 5.7 ou superior  
+- Servidor Apache ou NGINX  
+- Composer (opcional)
 
 ## Instalação
 
-1. Clone este repositório:
-    ```bash
-    git clone https://github.com/DomingosCapewa/G-Tech.git
-    ```
-2. Acesse o diretório do projeto:
-    ```bash
-    cd G-Tech
-    ```
-3. Configure o banco de dados:
-    - Crie um banco de dados MySQL
-    - Importe as tabelas/estrutura (use o arquivo .SQL para as tabelas)
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seuusuario/g-tech.git g-tech
+   cd g-tech
+2. Configure o banco de dados:
+   - Crie um banco `gtech`.
+   - Importe o arquivo `BANCO_DE_DADOS.sql` (disponível na pasta `G-TECH`).
 
-4. Configure as variáveis de ambiente (como conexão com banco de dados) no arquivo de configuração do projeto.
+3. Configure o `config.php`:
+   ```php
+   define('DB_HOST', 'localhost');
+   define('DB_NAME', 'hospedagem');
+   define('DB_USER', 'root');
+   define('DB_PASS', '');
+   ```
 
-6. Inicie o servidor local:
-    ```bash
-    php -S localhost:8000
-    ```
-7. Acesse via navegador:
-    ```
-    http://localhost:8000
-    ```
+4. Suba o servidor local:
+   ```bash
+   php -S localhost:8000
+   ```
 
-## Como Contribuir
+5. Acesse:  
+   `http://localhost:8000`
 
-Contribuições são bem-vindas!  
-Para colaborar, siga os passos abaixo:
+## Estrutura do Banco de Dados
 
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature:
-    ```bash
-    git checkout -b minha-feature
-    ```
-3. Faça commit das suas alterações:
-    ```bash
-    git commit -m 'Minha contribuição'
-    ```
-4. Faça push para a sua branch:
-    ```bash
-    git push origin minha-feature
-    ```
-5. Abra um Pull Request
+- **usuarios** → dados pessoais e senha (hash).  
+- **planos** → nome, preço, armazenamento, banda, sites, e-mails.  
+- **assinaturas** → status, datas de início/vencimento, usuário vinculado.  
+- **pagamentos** → assinatura vinculada, valor, método, status e data.
 
-Consulte as [issues](https://github.com/DomingosCapewa/G-Tech/issues) para sugestões, bugs ou melhorias.
+## Fluxo principal do usuário
 
+1. Cadastro.  
+2. Login.  
+3. Escolha de um plano.  
+4. Pagamento via Cartão ou PIX.  
+5. Ativação automática da assinatura.  
+6. Gerenciamento no painel do usuário.
 
+## Como contribuir
+
+1. Fork este repositório.  
+2. Crie uma branch: `git checkout -b minha-feature`.  
+3. Commit suas alterações: `git commit -m 'Minha feature'`.  
+4. Push: `git push origin minha-feature`.  
+5. Abra um **Pull Request**.
+
+## Licença
+
+Este projeto está sob a licença **MIT**.  
+Sinta-se à vontade para usar, estudar e modificar!
+
+## Autor
+
+- **Domingos**  
+Desenvolvedor Backend, entusiasta de segurança e boas práticas.  
+[LinkedIn](https://linkedin.com/domingoscapewa) | [GitHub](https://github.com/domingosCapewa)
+
+## Screenshots
+
+> (Vou adicionar prints da tela de login, planos, painel de usuário e painel admin.)
+
+## Notas finais
+
+✅ Projeto desenvolvido como parte da disciplina **Desenvolvimento Backend**.  
+✅ Foco em boas práticas de segurança, modularidade e experiência do usuário.
