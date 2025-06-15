@@ -18,7 +18,7 @@ O sistema permite que usuários escolham e assinem planos, façam pagamentos e g
 * Cancelamento de assinatura.
 
 ### Administrador
-✅ Painel administrativo com controle total:  
+- Painel administrativo com controle total:  
 - Cadastro, edição e exclusão de planos.  
 - Visualização de métricas e últimos pagamentos.  
 - Gestão de usuários.
