@@ -13,9 +13,9 @@ O sistema permite que usuários escolham e assinem planos, façam pagamentos e g
 ### Usuário
 * Cadastro e login seguro com hash de senha.  
 * Escolha e assinatura de planos de hospedagem.  
-* Processamento de pagamento com métodos variados (Cartão e PIX).  
-* Cancelamento de assinatura.  
+* Processamento de pagamento com métodos variados (Cartão e PIX).    
  * Painel do usuário com informações sobre plano ativo e histórico.
+* Cancelamento de assinatura.
 
 ### Administrador
 ✅ Painel administrativo com controle total:  
@@ -25,7 +25,7 @@ O sistema permite que usuários escolham e assinem planos, façam pagamentos e g
 
 ## Tecnologias utilizadas
 
-- **Backend:** PHP 7.4+ com PDO.
+- **Backend:** PHP com PDO.
 - **Banco de Dados:** MySQL.
 - **Frontend:** HTML5, CSS3, Bootstrap 5.
 - **JavaScript:** interatividade com campos dinâmicos e modais.
